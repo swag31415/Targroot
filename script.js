@@ -1,1 +1,0 @@
-M.toast({html: 'Welcome!'})
