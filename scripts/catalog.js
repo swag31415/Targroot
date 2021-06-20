@@ -48,6 +48,6 @@ function fire() {
   })
   .then(() => succ("Successfully Cataloged"))
   .catch(() => fail("Something went wrong; Failed to Catalog"))
-  // Go back to the main page
-  window.location.href = "/Targroot/index.html"
+  // Go back to the main page after a delay
+  setTimeout(() => window.location.href = "/Targroot/index.html", 2000)
 }
