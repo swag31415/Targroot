@@ -40,9 +40,14 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 function fire() {
-  db.collection("catalog").add({
-    location: `(${loc.cx.baseVal.value}, ${loc.cy.baseVal.value})`,
-    scanned: [...scanned]
-  }).then(() => succ("Successfully Cataloged"))
+  db.collection("catalog")
+  .doc(`(${loc.cx.baseVal.value}, ${loc.cy.baseVal.value})`)
+  .set({
+    scans: [...scanned],
+    time: Date.now()
+  })
+  .then(() => succ("Successfully Cataloged"))
   .catch(() => fail("Something went wrong; Failed to Catalog"))
+  // Go back to the main page
+  window.location.href = "/Targroot/index.html"
 }
