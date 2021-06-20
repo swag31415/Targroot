@@ -12,11 +12,9 @@
 <body class="container">
   <h1>Targroot</h1>
   <main>
-    <div id="opts" class="row">
-      <button class="btn col s6 m4 l2" onclick="start_push()">Start Push</button>
-    </div>
+    <div id="opts" class="row"></div>
     <div id="push" class="row" style="display: none;">
-      <p class="col s12">Start Scanning! Any items you scan will show up below. Once you have scanned all the items you want to push click <a href="#" onclick="show_route();">here</a></p>
+      <p class="col s12">Start Scanning! Any items you scan will show up below. Once you have scanned all the items you want to push click <a href="#" onclick="push.end();">here</a></p>
       <div id="scanned_push"></div>
     </div>
   </main>
@@ -24,6 +22,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- OnScan.js -->
   <script src="https://unpkg.com/onscan.js/onscan.min.js"></script>
-  <!-- Local Script -->
+  <!-- Local Scripts -->
+  <script src="push.js"></script>
   <script src="script.js"></script>
 </body>

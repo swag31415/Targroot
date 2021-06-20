@@ -6,30 +6,13 @@ succ("Welcome!")
 
 onScan.attachTo(document, { reactToPaste: true })
 
+const opts = document.getElementById("opts")
 function hide_opts(should_hide) {
-  document.getElementById("opts").style.display = should_hide ? "none" : ""
+  opts.style.display = should_hide ? "none" : ""
 }
 
-const push = document.getElementById("push")
-const to_push = new Set()
-function start_push() {
-  hide_opts(true)
-  push.style.display = ""
-  to_push.clear()
-  document.addEventListener("scan", add_to_push)
-}
-
-const scanned_push = document.getElementById("scanned_push")
-function add_to_push(item) {
-  let panel = document.createElement("p")
-  panel.className = "flow-text center-align col s6 m4 l3"
-  panel.innerText = item
-  scanned_push.prepend(panel)
-  to_push.add(item)
-  succ(`Added ${item} to push`)
-}
-
-function show_route() {
-  // TODO
-  fail("not yet implemented")
-}
+let st = document.createElement("button")
+st.className = "btn col s6 m4 l2"
+st.onclick = () => push.start()
+st.innerText = "Start Push"
+opts.append(st)
