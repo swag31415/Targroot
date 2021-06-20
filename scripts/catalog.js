@@ -7,6 +7,16 @@ document.querySelectorAll("circle").forEach(circ => {
     loc = circ
     succ("location selected") 
   })
+  // Just use their location as an id
+  circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
+  // Apply the orange
+  db.collection("catalog").doc(circ.id).get()
+  .then(doc => {
+    // If it doesn't exist or it's more than a week old
+    if (!doc.exists || (doc.data().time - Date.now) < 604800000)
+      circ.classList.add("stale")
+  })
+  .catch(() => fail("Failed to get some data from Firestore"))
 })
 
 let scanned = new Set()
@@ -25,7 +35,7 @@ document.addEventListener("scan", (item) => {
 
 function fire() {
   db.collection("catalog")
-  .doc(`(${loc.cx.baseVal.value}, ${loc.cy.baseVal.value})`)
+  .doc(loc.id)
   .set({
     scans: [...scanned],
     time: Date.now()
