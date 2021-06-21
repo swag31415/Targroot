@@ -1,14 +1,23 @@
 // For pushing items to the floor
 
-let to_push = new Set()
+document.querySelectorAll("circle").forEach(circ => {
+  circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
+})
 
 onScan.attachTo(document, { reactToPaste: true })
 document.addEventListener("scan", (item) => {
   item = item.detail.scanCode
-  if (to_push.has(item)) {
-    fail(`Already pushing ${item}`)
-  } else {
-    to_push.add(item)
-    succ(`Added ${item} to push`)
-  }
+  db.collection("catalog")
+  .where("scans", "array-contains", item)
+  .get().then(found => {
+    if (found.empty) fail("item not found")
+    else {
+      document.querySelectorAll("circle.current").forEach(circ => {
+        circ.classList.remove("current")
+        circ.classList.add("route")
+      })
+      found.docs.forEach(doc => document.getElementById(doc.id).classList.add("current"))
+      succ("Item added to push")
+    }
+  })
 })
