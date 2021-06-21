@@ -7,6 +7,16 @@ document.querySelectorAll("circle").forEach(circ => {
     loc = circ
     succ("location selected") 
   })
+  // Just use their location as an id
+  circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
+  // Apply the orange
+  db.collection("catalog").doc(circ.id).get()
+  .then(doc => {
+    // If it doesn't exist or it's more than a week old
+    if (!doc.exists || (doc.data().time - Date.now) < 604800000)
+      circ.classList.add("stale")
+  })
+  .catch(() => fail("Failed to get some data from Firestore"))
 })
 
 let scanned = new Set()
@@ -23,26 +33,15 @@ document.addEventListener("scan", (item) => {
   }
 })
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyBtJk2iSwvh-EgybKKIFXpbdD0xa78-iqU",
-  authDomain: "targroot.firebaseapp.com",
-  projectId: "targroot",
-  storageBucket: "targroot.appspot.com",
-  messagingSenderId: "944949322357",
-  appId: "1:944949322357:web:8acd94de6078d62fde0e3c",
-  measurementId: "G-T36631T7LK"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-
 function fire() {
-  db.collection("catalog").add({
-    location: `(${loc.cx.baseVal.value}, ${loc.cy.baseVal.value})`,
-    scanned: [...scanned]
-  }).then(() => succ("Successfully Cataloged"))
+  db.collection("catalog")
+  .doc(loc.id)
+  .set({
+    scans: [...scanned],
+    time: Date.now()
+  })
+  .then(() => succ("Successfully Cataloged"))
   .catch(() => fail("Something went wrong; Failed to Catalog"))
+  // Go back to the main page after a delay
+  setTimeout(() => window.location.href = "/Targroot/index.html", 2000)
 }
