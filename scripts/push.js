@@ -18,6 +18,11 @@ document.addEventListener("scan", (item) => {
       })
       found.docs.forEach(doc => document.getElementById(doc.id).classList.add("current"))
       succ("Item added to push")
+      if (found.size == 1) {
+        let scans = found.docs[0].data().scans
+        let ind = scans.indexOf(item) / scans.length
+        toast(`Item is ${ind * 100}% from the left of the asile`)
+      }
     }
   })
 })
