@@ -21,7 +21,7 @@ document.querySelectorAll("circle").forEach(circ => {
 
 let scanned = new Set()
 
-onScan.attachTo(document, { reactToPaste: true })
+onScan.attachTo(document, { reactToPaste: true, reactToKeydown: true })
 document.addEventListener("scan", (item) => {
   item = item.detail.scanCode
   if (scanned.has(item)) {
