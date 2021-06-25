@@ -4,9 +4,9 @@ document.querySelectorAll("circle").forEach(circ => {
   circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
 })
 
-onScan.attachTo(document, { reactToPaste: true })
+init_scanner(document.getElementById("scan_target"))
 document.addEventListener("scan", (item) => {
-  item = item.detail.scanCode
+  item = item.detail
   db.collection("catalog")
   .where("scans", "array-contains", item)
   .get().then(found => {

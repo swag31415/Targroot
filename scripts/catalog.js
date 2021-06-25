@@ -21,9 +21,9 @@ document.querySelectorAll("circle").forEach(circ => {
 
 let scanned = new Set()
 
-onScan.attachTo(document, { reactToPaste: true, reactToKeydown: true })
+init_scanner(document.getElementById("scan_target"))
 document.addEventListener("scan", (item) => {
-  item = item.detail.scanCode
+  item = item.detail
   if (scanned.has(item)) {
     toast("Already scanned item")
   } else {
