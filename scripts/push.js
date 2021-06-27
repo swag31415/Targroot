@@ -4,7 +4,8 @@ document.querySelectorAll("circle").forEach(circ => {
   circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
 })
 
-init_scanner(document.getElementById("scan_target"))
+const scan_target = document.getElementById("scan_target")
+init_scanner(scan_target)
 document.addEventListener("scan", (item) => {
   item = item.detail
   db.collection("catalog")
@@ -26,3 +27,5 @@ document.addEventListener("scan", (item) => {
     }
   })
 })
+
+scan_target.focus()
