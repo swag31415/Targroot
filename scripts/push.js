@@ -21,7 +21,7 @@ document.addEventListener("scan", (item) => {
       if (found.size == 1) {
         let scans = found.docs[0].data().scans
         let ind = scans.indexOf(item) / scans.length
-        toast(`Item is ${ind * 100}% from the left of the asile`)
+        toast(`Item is ${(ind * 100).toPrecision(4)}% from the left of the asile`)
       }
     }
   })
