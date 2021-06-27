@@ -4,7 +4,8 @@ document.querySelectorAll("circle").forEach(circ => {
   circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
 })
 
-init_scanner(document.getElementById("scan_target"))
+const scan_target = document.getElementById("scan_target")
+init_scanner(scan_target)
 document.addEventListener("scan", (item) => {
   item = item.detail
   db.collection("catalog")
@@ -21,8 +22,10 @@ document.addEventListener("scan", (item) => {
       if (found.size == 1) {
         let scans = found.docs[0].data().scans
         let ind = scans.indexOf(item) / scans.length
-        toast(`Item is ${ind * 100}% from the left of the asile`)
+        toast(`Item is ${(ind * 100).toPrecision(4)}% from the left of the asile`)
       }
     }
   })
 })
+
+scan_target.focus()
