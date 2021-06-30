@@ -44,7 +44,7 @@ function fire() {
   .then(() => succ("Successfully Cataloged"))
   .catch(() => fail("Something went wrong; Failed to Catalog"))
   // Go back to the main page after a delay
-  setTimeout(() => window.location.href = "/Targroot/index.html", 2000)
+  setTimeout(() => window.location.href = "/Targroot/start.html", 2000)
 }
 
 scan_target.focus()

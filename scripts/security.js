@@ -1,0 +1,1 @@
+if (!firebase.auth().currentUser) window.location.href = "/Targroot/index.html"
