@@ -1,1 +1,3 @@
-if (!firebase.auth().currentUser) window.location.href = "/Targroot/index.html"
+firebase.auth().onAuthStateChanged(user => {
+  if (!user) window.location.href = "/Targroot/index.html"
+})
