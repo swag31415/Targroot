@@ -12,11 +12,13 @@
 <body class="container">
   <h1><a href="/Targroot/index.html">Targroot</a></h1>
   <main class="row">
-    <div class="input-field col s12 m10">
-      <input id="pass" type="password">
-      <label for="pass">Enter Password (Ask Swag)</label>
-    </div>
-    <button id="login" class="input-field col s2 btn green right">Sign in</button>
+    <form id="login">
+      <div class="input-field col s12 m9">
+        <input name="pass" id="pass" type="password">
+        <label for="pass">Enter Password (Ask Swag)</label>
+      </div>
+      <input type="submit" value="submit" class="input-field col s3 btn green right">
+    </form>
   </main>
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
