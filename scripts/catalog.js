@@ -20,9 +20,6 @@ document.querySelectorAll("circle").forEach(circ => {
 })
 
 let scanned = new Set()
-
-const scan_target = document.getElementById("scan_target")
-init_scanner(scan_target)
 document.addEventListener("scan", (item) => {
   item = item.detail
   if (scanned.has(item)) {
@@ -46,5 +43,3 @@ function fire() {
   // Go back to the main page after a delay
   setTimeout(() => window.location.href = "/Targroot/start.html", 2000)
 }
-
-scan_target.focus()

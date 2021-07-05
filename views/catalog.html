@@ -26,7 +26,13 @@
       <g fill="#666" font-size="28"><text x="91" y="357">F50</text><text x="321" y="29">F47</text><text x="222" y="511">F49</text><text x="319" y="515">F48</text><text x="445" y="512">F46</text><text x="541" y="506">F45</text><text x="547" y="35">F44</text><text x="665" y="379">F43</text><text x="761" y="378">F42</text><text x="891" y="610">F41</text><text x="977" y="608">F40</text><text x="890" y="210">F39</text><text x="983" y="209">F38</text><text x="1109" y="506">F37</text><text x="1199" y="506">F36</text><text x="1305" y="76">F35</text><text x="1325" y="562">F34</text><text x="1416" y="563">F33</text><text x="1547" y="109">F32</text><text x="1703" y="109">F31</text><text x="1855" y="111">F30</text><text x="1997" y="555">F29</text><text x="2086" y="551">F28</text><text x="2214" y="519">F27</text><text x="2305" y="516">F26</text><text x="2107" y="73">F25</text><text x="2428" y="255">F22</text><text x="2522" y="253">F21</text><text x="2427" y="602">F24</text><text x="2521" y="604">F23</text><text x="2644" y="498">F20</text><text x="2745" y="500">F19</text><text x="2747" y="35">F18</text><text x="2870" y="401">F17</text><text x="1744" y="875">F79</text></g>
     </svg>
     <p>Items scanned: <span id="count">0</span></p>
-    <input type="text" id="scan_target" placeholder="Keep this selected while scanning">
+    <form id="barcode_form" class="row">
+      <div class="inout-field col s9">
+        <input type="text" id="scan_target">
+        <label for="scan_target">Enter Barcode</label>
+      </div>
+      <input type="submit" value="Search" class="input-field btn green col s3 right">
+    </form>
   </main>
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
