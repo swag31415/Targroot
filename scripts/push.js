@@ -13,8 +13,6 @@ function get_circ(docRef) {
   return document.getElementById(docRef.id)
 }
 
-const scan_target = document.getElementById("scan_target")
-init_scanner(scan_target)
 document.addEventListener("scan", (item) => {
   item = item.detail
   db.collection("catalog")
@@ -41,5 +39,3 @@ document.addEventListener("scan", (item) => {
     }
   })
 })
-
-scan_target.focus()
