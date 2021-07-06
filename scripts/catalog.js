@@ -13,7 +13,7 @@ document.querySelectorAll("circle").forEach(circ => {
   db.collection("catalog").doc(circ.id).get()
   .then(doc => {
     // If it doesn't exist or it's more than a week old
-    if (!doc.exists || (doc.data().time - Date.now()) < 604800000)
+    if (!doc.exists || (Date.now() - doc.data().time) > 604800000)
       circ.classList.add("stale")
   })
   .catch(() => fail("Failed to get some data from Firestore"))
