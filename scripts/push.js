@@ -22,7 +22,7 @@ document.addEventListener("scan", (item) => {
       found.docs.forEach(doc => get_circ(doc).classList.add("current"))
       succ("Item added to push")
       if (found.size == 1) {
-        toast(`Item is ${doc.data().scans.indexOf(item)} items from the left of the asile`)
+        toast(`Item is ${found.docs[0].data().scans.indexOf(item)} items from the left of the asile`)
       } else {
         let inds = found.docs
           .sort((d1, d2) => get_circ(d1).cx.baseVal.value - get_circ(d2).cx.baseVal.value)
