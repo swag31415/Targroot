@@ -4,11 +4,6 @@ document.querySelectorAll("circle").forEach(circ => {
   circ.id = `(${circ.cx.baseVal.value}, ${circ.cy.baseVal.value})`
 })
 
-function get_ind(docRef, item) {
-  let scans = docRef.data().scans
-  return scans.indexOf(item) / scans.length
-}
-
 function get_circ(docRef) {
   return document.getElementById(docRef.id)
 }
@@ -27,14 +22,13 @@ document.addEventListener("scan", (item) => {
       found.docs.forEach(doc => get_circ(doc).classList.add("current"))
       succ("Item added to push")
       if (found.size == 1) {
-        let ind = get_ind(found.docs[0], item)
-        toast(`Item is ${(ind * 100).toPrecision(4)}% from the left of the asile`)
+        toast(`Item is ${doc.data().scans.indexOf(item)} items from the left of the asile`)
       } else {
         let inds = found.docs
           .sort((d1, d2) => get_circ(d1).cx.baseVal.value - get_circ(d2).cx.baseVal.value)
-          .map(doc => (get_ind(doc, item) * 100).toPrecision(4))
+          .map(doc => doc.data().scans.indexOf(item))
         let last = inds.pop()
-        toast(`From left to right the item is ${inds.join("%, ")}, and ${last}% from the left of each asile respectivly`)
+        toast(`From left to right the item is ${inds.join(", ")}, and ${last} items from the left of each asile respectivly`)
       }
     }
   })
