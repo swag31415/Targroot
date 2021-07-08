@@ -1,5 +1,5 @@
 # Targroot
-A webapp I made to assist Edgewood Target Team Members in the Electronics Department with their day-to-day activities.
+A webapp I made to assist Edgewood Target Team Members in the Electronics Department with their day-to-day activities. The site is live [here](https://swag31415.github.io/Targroot/)
 
 ## Planned Features
 - [ ] guests can type in what they need and get a map with directions of where it is and how many we have. Or it says we have some in the backroom (and maybe points to the nearest team member)
