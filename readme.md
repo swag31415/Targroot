@@ -1,7 +1,7 @@
 # Targroot
-A webapp I made to assist Edgewood Target Team Members in the Electronics Department with their day-to-day activities. The site is live [here](https://swag31415.github.io/Targroot/)
+A webapp I made to assist Edgewood Target Team Members in the Electronics Department with their day-to-day activities.
 
-## Planned Features
+## Features
 - [ ] guests can type in what they need and get a map with directions of where it is and how many we have. Or it says we have some in the backroom (and maybe points to the nearest team member)
 - [X] team members can scan all the items they need to push ~~and it will create an ideal route through the store~~
 - [ ] It can tell you whether to box or spider wrap the item, if you scan all of them it tells you how many boxes/spider wrap you need (and what sizes)
